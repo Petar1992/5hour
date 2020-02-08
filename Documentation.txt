@@ -1,0 +1,1 @@
+PHP Version used for this project is 7.1.22.
