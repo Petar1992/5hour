@@ -1,26 +1,5 @@
 <?php
 include "../config.php";
-include "register-validation.php";
-
-
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  if(isset($_POST['register'])){
-
-    // 1. get user info from POST
-    $registerUserDto = getRegisterUserDto();
-    // 2. validate user
-    $result = validateRegistration($registerUserDto);
-    if ($result->isValid()) {
-    // save user to db
-    addUserToDb($registerUserDto);
-    // redirect
-    
-    } else {
-      $errorMessages = $result->getErrorMessages();
-    }
-  }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <h3 class=>If you are new here, please fill the form below to register.</h3>
   </div>
   <div class="register-form">
-  <form action="register.php" method="post">
+  <form action="register-user.php" method="post">
 
 <?php
 if (!empty($errorMessages) && is_array($errorMessages)) {
