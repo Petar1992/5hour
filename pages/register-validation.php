@@ -47,6 +47,7 @@ function validateRegistration($userToValidate){
   }
 
   return new RegistrationValidationResult( $errorMessages, $isValid );
+ 
 }
 
 function addUserToDb($userToAdd) {

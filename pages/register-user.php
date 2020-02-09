@@ -1,8 +1,5 @@
 <?php
 
-  require_once "../config.php";
-  require_once "register-validation.php";
-
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(isset($_POST['register'])){
   
@@ -12,12 +9,13 @@
       $result = validateRegistration($registerUserDto);
       if ($result->isValid()) {
       // save user to db
-      addUserToDb($registerUserDto);
+     addUserToDb($registerUserDto);
+     
       // redirect
       
       } else {
         $errorMessages = $result->getErrorMessages();
+      
       }
     }
   }
-

@@ -1,5 +1,9 @@
 <?php
 include "../config.php";
+include "register-validation.php";
+include "register-user.php";
+
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +20,7 @@ include "../config.php";
     <h3 class=>If you are new here, please fill the form below to register.</h3>
   </div>
   <div class="register-form">
-  <form action="register-user.php" method="post">
+  <form action="register.php" method="post">
 
 <?php
 if (!empty($errorMessages) && is_array($errorMessages)) {
