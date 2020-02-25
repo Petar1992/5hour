@@ -36,6 +36,17 @@ function validateRegistration($userToValidate){
     $isValid = false;
   }
 
+  // Check if email is already in use
+  $pdo = Database::getInstance();
+  $user = $pdo->query("SELECT * FROM users WHERE email='$userToValidate->email'  LIMIT 1")->fetch();
+  if($user){
+    if($user['email'] === $userToValidate->email){
+      array_push($errorMessages, "Email address is already in use.");
+      $isValid = false;
+    }
+    $pdo = null; 
+  }
+
   if ($userToValidate->getRepeatPassword() == null && $userToValidate->getRepeatPassword() == '') {
     array_push($errorMessages, "Repeat password can't be empty");
     $isValid = false;
@@ -53,16 +64,18 @@ function validateRegistration($userToValidate){
 function addUserToDb($userToAdd) {
 
   $pdo = Database::getInstance();
-
+  
   $data = [
     'name' => $userToAdd->name,
     'email' => $userToAdd->email,
     'password' => $userToAdd->password,
     'repeat_password'=>$userToAdd->repeatPassword
   ];
-
+  
   $sql = "INSERT INTO users (name, email, password, repeat_password) VALUES (:name, :email, :password, :repeat_password)";
+  
   $stmt = $pdo->prepare($sql);
+  
   $stmt->execute($data);
   
 }

@@ -9,7 +9,7 @@
       $result = validateRegistration($registerUserDto);
       if ($result->isValid()) {
       // save user to db
-     addUserToDb($registerUserDto);
+      addUserToDb($registerUserDto);
      
       // redirect
       
