@@ -32,11 +32,11 @@ class Database {
 		if(empty(self::$instance)) {
 
 			$db_info = array(
-				"db_host" => "localhost",
-				"db_port" => "3306",
-				"db_user" => "root",
-				"db_pass" => "",
-				"db_name" => "5hour",
+				"db_host" => DB_HOST,
+				"db_port" => DB_PORT,
+				"db_user" => DB_USER,
+				"db_pass" => DB_PASS,
+				"db_name" => DB_NAME,
 				"db_charset" => "UTF-8");
 
 			try {
